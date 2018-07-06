@@ -6,34 +6,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
     <script src="js/stomp-wrapper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.1.0/adapter.js"></script>
-    <script src="http://builds.kurento.org/release/6.6.2/js/kurento-utils.min.js"></script>
+    <script src="js/kurento-utils.min.js"></script>
     <script src="js/webrtc-endpoint.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body onunload="endpoint.dispose();">
 <div>
     <video id="remoteVideo" autoplay width="800px" height="600px"></video>
-    <input type="button" value="播放" onclick="left()">
-    <input type="button" value="左旋" onclick="left()">
+    <input type="text" id="code"></div>
+<input type="button" value="播放" onclick="play()">
 
 </div>
 <script>
 
-    let endpoint = new WebRTCEndpoint(WebRTCEndpoint.MODE_RECV, {
-        url: 'ws://127.0.0.1:8080/signal',
-        namespace: '/rtsp/preview',
-        login: new Date().getTime(),
-        remoteVideo: document.getElementById('remoteVideo')
-    });
+    let endpoint = {};
 
-    function left() {
-        $.ajax({
-            url: '/cloudPlatform/left',
-            type: 'get',
-            success: function (data) {
-                alert(data);
-            }
-        })
+    function play() {
+        endpoint = new WebRTCEndpoint(WebRTCEndpoint.MODE_RECV, {
+            url: 'ws://192.168.10.12:8080/signal',
+            namespace: '/rtsp/preview',
+            login: document.getElementById('code').value,
+            remoteVideo: document.getElementById('remoteVideo')
+        });
     }
 </script>
 </body>
