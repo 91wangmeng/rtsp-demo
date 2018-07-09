@@ -4,10 +4,12 @@ import org.kurento.client.KurentoClient;
 import org.kurento.client.KurentoClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.simp.config.ChannelRegistration;
@@ -81,6 +83,16 @@ public class VideoSurveillanceApp extends AbstractWebSocketMessageBrokerConfigur
     @Bean
     public KurentoClient kurentoClient() {
         return new KurentoClientBuilder().setKmsWsUri("ws://192.168.201.128:8888/kurento").connect();
+    }
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer properties() {
+        PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
+        YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
+        //class引入
+        yaml.setResources(new ClassPathResource("videos.yml"));
+        configurer.setProperties(yaml.getObject());
+        return configurer;
     }
 
     public static void main(String[] args) {
