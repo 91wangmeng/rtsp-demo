@@ -14,7 +14,10 @@
 <div>
     <video id="remoteVideo" autoplay width="800px" height="600px"></video>
     <input type="text" id="code"></div>
+    <input type="text" id="start"></div>
+    <input type="text" id="end"></div>
 <input type="button" value="播放" onclick="play()">
+<input type="button" value="回放" onclick="playback()">
 
 </div>
 <script>
@@ -22,9 +25,20 @@
     let endpoint = {};
 
     function play() {
+
         endpoint = new WebRTCEndpoint(WebRTCEndpoint.MODE_RECV, {
             url: 'ws://192.168.10.12:8080/signal',
             namespace: '/rtsp/preview',
+            login: document.getElementById('code').value,
+            remoteVideo: document.getElementById('remoteVideo')
+        });
+    }
+    function playback() {
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+        endpoint = new WebRTCEndpoint(WebRTCEndpoint.MODE_RECV, {
+            url: 'ws://192.168.10.12:8080/signal',
+            namespace: '/rtsp/preview/'+start+'/'+end,
             login: document.getElementById('code').value,
             remoteVideo: document.getElementById('remoteVideo')
         });
