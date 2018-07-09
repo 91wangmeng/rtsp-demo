@@ -1,0 +1,48 @@
+videos:
+  #黄酒小镇
+  hjxzVodeos:
+    # 第一条监控点信息
+    # code值作为key
+    '001116':
+        name: 1公厕北
+        code: '001116'
+        ip: 192.168.30.11
+        port: 8000
+        channelNumber: 38
+        videoType: 枪机
+    #code 第二条监控点信息
+    '001118':
+        name: 1公厕弄堂
+        code: '001118'
+        ip: 192.168.30.11
+        port: 8000
+        channelNumber: 37
+        videoType: 枪机
+    '001134':
+        name: 100-4号北
+        code: '001134'
+        ip: 192.168.30.12
+        port: 8000
+        channelNumber: 40
+        videoType: 枪机
+    '004570':
+        name: 小飞天广场报警柱
+        code: '004570'
+        ip: 192.168.2.83
+        port: 8000
+        channelNumber: 1
+        videoType: 海康报警柱
+    '003434':
+        name: 鼎湖广场厕所后面1
+        code: '003434'
+        ip: 192.168.1.134
+        port: 8000
+        channelNumber: 1
+        videoType: 枪机
+    '003471':
+        name: 步虚山四号箱4
+        code: '003471'
+        ip: 192.168.1.148
+        port: 8000
+        channelNumber: 1
+        videoType: 枪机
