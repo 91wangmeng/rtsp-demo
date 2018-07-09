@@ -80,7 +80,7 @@ public class VideoSurveillanceApp extends AbstractWebSocketMessageBrokerConfigur
 
     @Bean
     public KurentoClient kurentoClient() {
-        return new KurentoClientBuilder().setKmsWsUri("ws://192.168.10.12:8888/kurento").connect();
+        return new KurentoClientBuilder().setKmsWsUri("ws://192.168.201.128:8888/kurento").connect();
     }
 
     public static void main(String[] args) {
