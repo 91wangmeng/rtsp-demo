@@ -76,7 +76,8 @@
         video.height = 288 / 2;
         videos.appendChild( video );
         let endpoint = new WebRTCEndpoint( WebRTCEndpoint.MODE_RECV, {
-            url: 'ws://192.168.10.12:8080/signal',
+            //url: 'ws://192.168.10.12:8080/signal',
+            url: 'ws://127.0.0.1:8080/signal',
             namespace: '/rtsp/preview/ch1',
             // 因为执行速度太高，之前的new Date().getTime()两次调用会重复
             login: Math.random(),

@@ -23,7 +23,8 @@
 
     function play() {
         endpoint = new WebRTCEndpoint(WebRTCEndpoint.MODE_RECV, {
-            url: 'ws://192.168.10.12:8080/signal',
+            // url: 'ws://192.168.10.12:8080/signal',
+            url: 'ws://127.0.0.1:8080/signal',
             namespace: '/rtsp/preview',
             login: document.getElementById('code').value,
             remoteVideo: document.getElementById('remoteVideo')
